@@ -10,7 +10,7 @@
 #--------------------------------------------------------------
 
 # ask user for search date 
-user_date = ("7/3/2003")
+user_date = input("Enter a date to search for Sara [MM/DD/YYYY]:")
 
 #Create a variable pointing to the data file
 file_name = './Data/Raw/sara.txt'
@@ -63,10 +63,13 @@ for date_item in date_dict.items():
         #add the key to the list
         matching_keys.append(the_key)
         
+# if no records found tell the user
+if len(matching_keys) == 0:
+    print(f"No observations on {user_date}")
         
 # reveal locations for each key to matching key
 for matching_key in matching_keys:
-    the_coords = coord_dict[matching_key]
+    obs_lat, obs_lon = coord_dict[matching_key]
     obs_date = date_dict[matching_key]
-    print("Record {matching_key} indicates Sara was seen at lat:{obs_lat},lon:{obs_lon} on {obs_date}")
+    print(f"Record {matching_key} indicates Sara was seen at lat:{obs_lat},lon:{obs_lon} on {obs_date}")
     
